@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especial de Navidad | Ministerio Público</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fondo animado de nieve y destellos navideños -->
+    <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+    <!-- Guirnalda de luces navideñas superior -->
+    <div class="christmas-lights" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Encabezado / Barra de Navegación -->
+    <header class="site-header" id="inicio">
+        <div class="container header-inner">
+            <div class="brand-logos">
+                <!-- Logos originales intactos sin ninguna modificación -->
+                <img src="recursos/logo mp navidad.png" alt="Logo Ministerio Público" class="logo-mp-img">
+                <img src="recursos/logo navidad.png" alt="Símbolo Nacimiento Navidad" class="logo-navidad-img">
+            </div>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#video-central" class="nav-link">Video Navideño</a></li>
+                    <li><a href="#significado" class="nav-link">Sobre la Navidad</a></li>
+                    <li><a href="#tradiciones" class="nav-link">Tradiciones y Valores</a></li>
+                    <li><a href="#cronograma" class="nav-link">Especial Navideño</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button id="toggle-snow-btn" class="snow-btn" title="Activar/Pausar nieve navideña" aria-pressed="true">
+                    ❄ Nieve Activa
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección Hero con el Mensaje y Logos Oficiales intactos -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="official-banner-wrapper reveal">
+                    <!-- Imagen oficial "mensaje y logo.jpg" mostrada íntegramente sin alteración -->
+                    <img src="recursos/mensaje y logo.jpg" alt="Ministerio Público - En esta Navidad, la confianza vuelve a casa" class="official-banner-img">
+                </div>
+
+                <!-- Contador regresivo navideño -->
+                <div class="countdown-banner reveal">
+                    <div class="countdown-title">
+                        <span class="star-icon">✦</span>
+                        <span>Cuenta Regresiva para Nochebuena</span>
+                        <span class="star-icon">✦</span>
+                    </div>
+                    <div class="countdown-grid" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">00</span>
+                            <span class="countdown-label">Días</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">00</span>
+                            <span class="countdown-label">Horas</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">00</span>
+                            <span class="countdown-label">Minutos</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">00</span>
+                            <span class="countdown-label">Segundos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-cta reveal">
+                    <a href="#video-central" class="btn-primary">
+                        <span>▶ Ver Video Central de Navidad</span>
+                    </a>
+                    <a href="#significado" class="btn-secondary">
+                        <span>Explorar Apartados Navideños</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Central: Reproductor del Video Navideño -->
+        <section id="video-central" class="video-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge">✦ Proyección Especial ✦</span>
+                    <h1 class="section-title">Mensaje Audiovisual de Navidad</h1>
+                    <!-- TEXTO DE RELLENO: Puedes cambiar esta descripción cuando lo desees -->
+                    <p class="section-subtitle">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Compartimos nuestro mensaje especial para estas fiestas.
+                    </p>
+                </div>
+
+                <div class="video-showcase reveal" id="video-showcase">
+                    <!-- Adornos esquineros dorados -->
+                    <div class="frame-corner corner-tl" aria-hidden="true"></div>
+                    <div class="frame-corner corner-tr" aria-hidden="true"></div>
+                    <div class="frame-corner corner-bl" aria-hidden="true"></div>
+                    <div class="frame-corner corner-br" aria-hidden="true"></div>
+
+                    <div class="video-wrapper">
+                        <video id="main-christmas-video" controls preload="metadata" poster="recursos/mensaje y logo.jpg">
+                            <source src="recursos/video_navideno_mp.mp4" type="video/mp4">
+                            Tu navegador no soporta la reproducción de video HTML5.
+                        </video>
+                    </div>
+
+                    <!-- Barra de controles e interacción complementaria del video -->
+                    <div class="video-toolbar">
+                        <div class="video-status">
+                            <span class="status-dot" id="video-status-dot"></span>
+                            <span id="video-status-text">Listo para reproducir</span>
+                        </div>
+                        <div class="video-controls-extra">
+                            <button type="button" class="tool-btn" id="btn-play-pause">
+                                ▶ Reproducir
+                            </button>
+                            <button type="button" class="tool-btn" id="btn-mute">
+                                🔊 Sonido
+                            </button>
+                            <button type="button" class="tool-btn" id="btn-cinema">
+                                ✨ Modo Cine Navideño
+                            </button>
+                            <button type="button" class="tool-btn" id="btn-fullscreen">
+                                ⛶ Pantalla Completa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Separador ornamental navideño -->
+        <div class="ornament-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-star">✸</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Apartado 1: Información Acerca de la Navidad (Tarjetas con texto de relleno) -->
+        <section id="significado" class="info-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge">✦ Apartado Informativo 01 ✦</span>
+                    <h2 class="section-title">El Espíritu y Significado de la Navidad</h2>
+                    <!-- TEXTO DE RELLENO: Modificar libremente -->
+                    <p class="section-subtitle">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                    </p>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- Tarjeta 1 -->
+                    <article class="festive-card reveal">
+                        <div class="card-ornament">✦</div>
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                        </div>
+                        <!-- TEXTO DE RELLENO -->
+                        <h3 class="card-title">Historia y Origen</h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet duis sagittis ipsum.
+                        </p>
+                        <p class="card-text">
+                            Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+                        </p>
+                    </article>
+
+                    <!-- Tarjeta 2 -->
+                    <article class="festive-card reveal">
+                        <div class="card-ornament">✦</div>
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <!-- TEXTO DE RELLENO -->
+                        <h3 class="card-title">Unión en el Hogar</h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam in scelerisque sem at dolor.
+                        </p>
+                        <p class="card-text">
+                            Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor morbi lectus.
+                        </p>
+                    </article>
+
+                    <!-- Tarjeta 3 -->
+                    <article class="festive-card reveal">
+                        <div class="card-ornament">✦</div>
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <!-- TEXTO DE RELLENO -->
+                        <h3 class="card-title">Renovación y Esperanza</h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis.
+                        </p>
+                        <p class="card-text">
+                            Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apartado 2: Tradiciones y Valores Navideños (Pestañas interactivas con texto de relleno) -->
+        <section id="tradiciones" class="traditions-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge">✦ Apartado Informativo 02 ✦</span>
+                    <h2 class="section-title">Tradiciones y Valores de la Temporada</h2>
+                    <!-- TEXTO DE RELLENO -->
+                    <p class="section-subtitle">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Selecciona cada apartado para conocer más detalles sobre nuestras tradiciones y valores navideños.
+                    </p>
+                </div>
+
+                <div class="tabs-container reveal">
+                    <div class="tabs-header" role="tablist" aria-label="Apartados de tradiciones navideñas">
+                        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="tab-nacimiento">
+                            ✦ El Nacimiento
+                        </button>
+                        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-valores">
+                            ✦ Valores de Paz
+                        </button>
+                        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-encuentro">
+                            ✦ Encuentro Familiar
+                        </button>
+                        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-reflexion">
+                            ✦ Reflexión de Fin de Año
+                        </button>
+                    </div>
+
+                    <div class="tabs-content">
+                        <!-- Panel 1: Texto de relleno -->
+                        <div class="tab-panel active" id="tab-nacimiento" role="tabpanel">
+                            <div class="tab-panel-grid">
+                                <div class="tab-panel-visual">
+                                    <!-- Logo Navidad original sin modificar sobre su color exacto -->
+                                    <img src="recursos/logo navidad.png" alt="Símbolo Nacimiento Navidad" class="panel-unmodified-logo">
+                                </div>
+                                <div class="tab-panel-text">
+                                    <h3>La Tradición del Nacimiento Navideño</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                    <p>
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                                    </p>
+                                    <ul class="festive-list">
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                        <li>Integer nec odio praesent libero sed cursus ante dapibus.</li>
+                                        <li>Nulla quis sem at nibh elementum imperdiet duis sagittis.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Texto de relleno -->
+                        <div class="tab-panel" id="tab-valores" role="tabpanel">
+                            <div class="tab-panel-grid">
+                                <div class="tab-panel-visual">
+                                    <!-- Logo MP original sin modificar sobre su color exacto -->
+                                    <img src="recursos/logo mp navidad.png" alt="Logo Ministerio Público" class="panel-unmodified-logo">
+                                </div>
+                                <div class="tab-panel-text">
+                                    <h3>Compromiso, Confianza y Paz Social</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                                    </p>
+                                    <p>
+                                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                                    </p>
+                                    <ul class="festive-list">
+                                        <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+                                        <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+                                        <li>At vero eos et accusamus et iusto odio dignissimos ducimus.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Texto de relleno -->
+                        <div class="tab-panel" id="tab-encuentro" role="tabpanel">
+                            <div class="tab-panel-grid">
+                                <div class="tab-panel-visual">
+                                    <!-- Eslogan original sin modificar sobre su color exacto -->
+                                    <img src="recursos/eslogan navidad.png" alt="Eslogan En esta Navidad, la confianza vuelve a casa" class="panel-unmodified-slogan">
+                                </div>
+                                <div class="tab-panel-text">
+                                    <h3>El Valor del Reencuentro en Casa</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                                    </p>
+                                    <p>
+                                        Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+                                    </p>
+                                    <ul class="festive-list">
+                                        <li>Similique sunt in culpa qui officia deserunt mollitia animi.</li>
+                                        <li>Et harum quidem rerum facilis est et expedita distinctio.</li>
+                                        <li>Nam libero tempore, cum soluta nobis est eligendi optio.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 4: Texto de relleno -->
+                        <div class="tab-panel" id="tab-reflexion" role="tabpanel">
+                            <div class="tab-panel-grid">
+                                <div class="tab-panel-visual">
+                                    <img src="recursos/logo navidad.png" alt="Símbolo Nacimiento Navidad" class="panel-unmodified-logo">
+                                </div>
+                                <div class="tab-panel-text">
+                                    <h3>Mensaje de Reflexión y Esperanza</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                                    </p>
+                                    <p>
+                                        Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+                                    </p>
+                                    <ul class="festive-list">
+                                        <li>Donec quam felis, ultricies nec, pellentesque eu, pretium quis.</li>
+                                        <li>Nulla consequat massa quis enim donec pede justo fringilla.</li>
+                                        <li>In enim justo, rhoncus ut, imperdiet a, venenatis vitae justo.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apartado 3: Bloques Destacados / Cronograma y Notas Navideñas (Texto de relleno) -->
+        <section id="cronograma" class="highlights-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge">✦ Apartado Informativo 03 ✦</span>
+                    <h2 class="section-title">Especial de Temporada Navideña</h2>
+                    <!-- TEXTO DE RELLENO -->
+                    <p class="section-subtitle">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Espacio reservado para agregar información adicional, efemérides, actividades o mensajes especiales de Navidad.
+                    </p>
+                </div>
+
+                <div class="timeline-grid">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-badge">01</div>
+                        <div class="timeline-body">
+                            <!-- TEXTO DE RELLENO -->
+                            <h3>Inicio de la Temporada Navideña</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum aenean imperdiet.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-badge">02</div>
+                        <div class="timeline-body">
+                            <!-- TEXTO DE RELLENO -->
+                            <h3>Celebración de las Tradiciones Decembrinas</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus maecenas tempus tellus eget condimentum.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-badge">03</div>
+                        <div class="timeline-body">
+                            <!-- TEXTO DE RELLENO -->
+                            <h3>Nochebuena y Navidad en Familia</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim donec pede justo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-badge">04</div>
+                        <div class="timeline-body">
+                            <!-- TEXTO DE RELLENO -->
+                            <h3>Proyección y Deseos de Año Nuevo</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium integer tincidunt.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque de Cierre con Logos y Eslogan Oficiales sin modificar -->
+                <div class="closing-official-box reveal">
+                    <div class="closing-logos-row">
+                        <img src="recursos/logo mp navidad.png" alt="Logo Ministerio Público" class="closing-logo-mp">
+                    </div>
+                    <div class="closing-bottom-row">
+                        <img src="recursos/logo navidad.png" alt="Logo Navidad" class="closing-logo-navidad">
+                        <img src="recursos/eslogan navidad.png" alt="En esta Navidad, la confianza vuelve a casa" class="closing-eslogan">
+                    </div>
+                    <!-- TEXTO DE RELLENO ADICIONAL -->
+                    <p class="closing-placeholder-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Párrafo de cierre institucional editable para acompañar las festividades navideñas.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <img src="recursos/logo mp navidad.png" alt="Logo Ministerio Público" class="footer-logo">
+                <img src="recursos/logo navidad.png" alt="Logo Navidad" class="footer-logo">
+            </div>
+            <div class="footer-text">
+                <!-- TEXTO DE RELLENO -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Especial Navideño Institucional.</p>
+            </div>
+            <div class="footer-top-link">
+                <a href="#inicio" class="back-to-top">↑ Volver arriba</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
